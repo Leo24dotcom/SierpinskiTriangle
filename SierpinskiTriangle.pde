@@ -1,24 +1,22 @@
-int bee = 10;
+int bee = 100;
 public void setup(){
- size(1000,1000);
- frameRate(500);
+ size(1000,2000); 
  noLoop();
 }
 public void draw(){
-  sierpinksi(50,900,900);
+ circle(500,500,1000); 
 }
-public void sierpinksi(int x, int y, int len){
+public void circle(int x, int y, int len){
+  noFill();
   if(len <= bee){
-    fill(0,0,0);
-   triangle(x,y,x+len,y,x+len/2,y -len); 
-  }
+    ellipse(x,y,len,len);
+}
   else{
-    sierpinksi(x,y,len/2);
-    sierpinksi(x+(len/2),y,len/2);
-    sierpinksi(x+(len/4),y-(len/2),len/2);    
+   ellipse(x,y,len,len);
+   circle(x + len/4,y,len/2);
+   circle(x - len/4,y,len/2);
+   circle(x, y + len/4,len/2);
+   circle(x, y - len/4,len/2);
   }
 }
-void mouseDragged(){
-     bee += 5;
-     redraw();
-}
+
